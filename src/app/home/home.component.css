@@ -1,0 +1,56 @@
+.container {
+  height: 100vh;
+}
+
+.width {
+  width: 23.5%;
+  margin-bottom: 70px;
+}
+.in-bg {
+  background-color: rgb(78, 78, 78);
+}
+
+.height {
+  padding-top: 20px;
+}
+
+.order-text {
+  margin-top: 20px;
+}
+
+.input {
+  margin-left: 40px;
+}
+
+.input2 {
+  margin-left: 15px;
+}
+
+.line {
+  background-color: rgb(94, 93, 93);
+  height: 1px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+.bg {
+  background-color: rgb(236, 236, 236);
+}
+.order-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+mat-form-field {
+  width: 20%;
+}
+
+mat-card {
+  max-width: 1200px;
+  margin: auto;
+}
+
+mat-card-title {
+  text-align: center;
+}

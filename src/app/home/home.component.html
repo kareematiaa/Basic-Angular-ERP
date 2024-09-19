@@ -1,0 +1,185 @@
+<div class="container-fluid my-3">
+  <div class="bg p-3">
+    <form>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="customerId">Customer ID</label>
+                <select
+                  [(ngModel)]="selectedCustomerId"
+                  (change)="onCustomerSelect(selectedCustomerId)"
+                  class="form-control"
+                  name="customerId"
+                >
+                  <option
+                    *ngFor="let customer of customers"
+                    [value]="customer.id"
+                  >
+                    {{ customer.id }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="customerId">Full Name</label>
+                <input
+                  name="fullName"
+                  type="text"
+                  [(ngModel)]="fullName"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group width mt-3">
+        <label for="customerId">Location</label>
+        <input
+          name="location"
+          type="text"
+          [(ngModel)]="location"
+          class="form-control"
+          readonly
+        />
+      </div>
+      <div
+        class="form-group"
+        *ngFor="let detail of order.orderDetails; let i = index"
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <label for="productId-{{ i }}">Product ID</label>
+            <select
+              [(ngModel)]="selectedProductId"
+              (change)="onProductSelect(selectedProductId)"
+              class="form-control"
+              name="productId"
+            >
+              <option *ngFor="let product of products" [value]="product.id">
+                {{ product.id }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="productName-{{ i }}">Product Name</label>
+            <input
+              name="productName"
+              type="text"
+              [(ngModel)]="productName"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-2">
+            <label for="productDesc-{{ i }}">Product Description</label>
+            <input
+              name="productDescription"
+              type="text"
+              [(ngModel)]="productDescription"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="col-md-2">
+            <label for="quantity-{{ i }}">Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantity-{{ i }}"
+              name="quantity-{{ i }}"
+              [(ngModel)]="quantity"
+              required
+            />
+          </div>
+          <div class="col-md-2">
+            <label for="productPrice-{{ i }}">Product Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productPrice-{{ i }}"
+              name="productPrice-{{ i }}"
+              [(ngModel)]="price"
+              (input)="calculateResult()"
+            />
+          </div>
+          <div class="col-md-2">
+            <label for="totalPrice-{{ i }}">Total Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="totalPrice-{{ i }}"
+              name="totalPrice-{{ i }}"
+              [(ngModel)]="totalPrice"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-success mt-3">Add Product</button>
+    </form>
+    <div class="line"></div>
+    <div>
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <label for="customerId">Order Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="fullName"
+              name="fullName"
+              [(ngModel)]="orderPrice"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label for="discount">Discount</label>
+            <input
+              type="number"
+              class="form-control"
+              id="discount"
+              name="discount"
+              [(ngModel)]="discount"
+              (input)="calculateTotalPrice()"
+            />
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label for="value">Discount Value</label>
+            <input
+              type="number"
+              class="form-control"
+              id="value"
+              name="value"
+              [(ngModel)]="discountAmount"
+            />
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-group">
+            <label for="total">Total</label>
+            <input
+              type="number"
+              class="form-control"
+              id="total"
+              name="total"
+              [(ngModel)]="total"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" (click)="submitOrder()" class="btn btn-primary mt-3">
+      Submit
+    </button>
+  </div>
+</div>
